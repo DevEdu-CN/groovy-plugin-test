@@ -1,0 +1,30 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group = 'com.tomgregory'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+}
+
+
+gradlePlugin {
+    plugins {
+        fileDiff {
+            id = 'com.testplugin.file-diff'
+            implementationClass = 'com.testplugin.plugins.filediff.FileDiffPlugin'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
